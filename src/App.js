@@ -7,9 +7,10 @@ class App extends Component {
     searching_name: "",
     searching_result: "",
     result_arr: [],
-    page: "",
-    i: 1,
-    image_num: 0
+    page: "&page=",
+    image_number: 0,
+    page_number: 1,
+    image_max_number: 0
   };
 
   componentDidMount() {
@@ -26,7 +27,12 @@ class App extends Component {
     e.preventDefault();
     this.setState(
       {
-        searching_result: this.state.searching_name
+        searching_result: this.state.searching_name,
+        result_arr:[],
+        page: "&page=",
+        image_number: 0,
+        page_number: 1,
+        image_max_number: 0
       },
       () => {
         this.crawling();
@@ -39,17 +45,24 @@ class App extends Component {
     const cheerio = require("cheerio");
     console.log(this.state.searching_result);
     const options =
-      "https://cors-anywhere.herokuapp.com/https://wall.alphacoders.com/search.php?search=" +
+      (await "https://cors-anywhere.herokuapp.com/https://wall.alphacoders.com/search.php?search=") +
       this.state.searching_result +
       this.state.page;
-    const callback = await ((error, respons, body) => {
+    console.log(options);
+    const callback = async (error, respons, body) => {
+      console.log(this.state.page);
       if (error) throw error;
-      const $ = cheerio.load(body);
+      const $ = await cheerio.load(body);
       let json = [],
         title,
         id,
         category,
         img;
+      const image_max_number = Number(
+        await $("#page_container > h1")
+          .text()
+          .split(" ")[8]
+      );
 
       $("#page_container > div:nth-child(6) > div.thumb-container-big").each(
         function(i, elem) {
@@ -69,11 +82,18 @@ class App extends Component {
         }
       );
       console.log("json: ", json);
+      console.log(this.state.page);
+
       this.setState({
-        result_arr: this.state.result_arr.concat(json)
+        result_arr: this.state.result_arr.concat(json),
+        image_max_number: image_max_number,
+        // image_number: this.state.image_number + json.length
       });
-    });
+    };
     request(options, callback);
+    console.log("이미지맥스넘버", this.state.image_max_number);
+    console.log("이미지넘버", this.state.image_number);
+    console.log("페이지넘버", this.state.page_number);
   };
 
   _infiniteScroll = () => {
@@ -86,15 +106,20 @@ class App extends Component {
       document.body.scrollTop
     );
     let clientHeight = document.documentElement.clientHeight;
-    if (scrollTop + clientHeight + 100 > scrollHeight) {
+    if (
+      scrollTop + clientHeight + 100 > scrollHeight &&
+      this.state.image_max_number > this.state.image_number+30
+    ) {
       this.setState(
         {
-          i: this.state.i + 1,
-          page: this.state.page + "&page=" + String(this.state.i)
+          page_number: this.state.page_number + 1,
+          page:
+            this.state.page.substring(0, 6) +
+            String(this.state.page_number + 1),
+          image_number: this.state.image_number + 30
         },
         () => this.crawling()
       );
-      console.log(this.state);
     }
     // console.log(scrollTop, clientHeight, scrollHeight);
   };
