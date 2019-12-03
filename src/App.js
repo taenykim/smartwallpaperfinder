@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import search_icon from "./search_icon.png";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="full_container">
+        <div className="main">
+        <div className="main_title">SMART WALLPAPER FINDER</div>
+        <div className="main_subtitle">FROM alphacoders</div>
+          <div className="search_container">
+            <img src={search_icon} id="search_icon"></img>
+            <input className="search"></input>
+          </div>
+        </div>
+        <div className="contents">dd</div>
+      </div>
+    );
+  }
 }
 
 export default App;

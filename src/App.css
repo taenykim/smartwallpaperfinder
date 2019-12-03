@@ -1,22 +1,86 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: "escore1";
+  src: url(font/SCDream1.otf) format("truetype");
 }
-
-.App-logo {
-  height: 40vmin;
+@font-face {
+  font-family: "escore2";
+  src: url(font/SCDream2.otf) format("truetype");
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@font-face {
+  font-family: "escore3";
+  src: url(font/SCDream3.otf) format("truetype");
+}
+@font-face {
+  font-family: "escore4";
+  src: url(font/SCDream4.otf) format("truetype");
+}
+@font-face {
+  font-family: "escore5";
+  src: url(font/SCDream5.otf) format("truetype");
+}
+@font-face {
+  font-family: "escore6";
+  src: url(font/SCDream6.otf) format("truetype");
+}
+@font-face {
+  font-family: "escore7";
+  src: url(font/SCDream7.otf) format("truetype");
+}
+@font-face {
+  font-family: "escore8";
+  src: url(font/SCDream8.otf) format("truetype");
+}
+@font-face {
+  font-family: "escore9";
+  src: url(font/SCDream9.otf) format("truetype");
+}
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100w;
+  height: 100vh;
+  background: url(main.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
 }
-
-.App-link {
-  color: #09d3ac;
+.main_title {
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  color: white;
+  font-family: "escore9";
+  font-size: 40px;
+  margin-top: 10%;
+}
+.main_subtitle {
+  color: white;
+  font-family: "escore6";
+  font-size: 15px;
+}
+.search_container {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  width: 80vw;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 5%;
+  background: rgba(255, 255, 255, 0.5);
+}
+#search_icon {
+  padding-left: 40px;
+  width: 20px;
+  height: 20px;
+}
+.search {
+  padding-left: 40px;
+  background: none;
+  border: none;
+  font-family: "escore9";
+}
+.search:focus {
+  outline: none;
 }
