@@ -31,5 +31,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage" : "http://myname.github.io/smartwallpaperfinder"
+  "homepage": "http://myname.github.io/smartwallpaperfinder",
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
+  }
 }
