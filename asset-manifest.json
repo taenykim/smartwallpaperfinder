@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/smartwallpaperfinder/static/css/main.467a4682.chunk.css",
+    "main.js": "/smartwallpaperfinder/static/js/main.1f6ffdc5.chunk.js",
+    "main.js.map": "/smartwallpaperfinder/static/js/main.1f6ffdc5.chunk.js.map",
+    "runtime-main.js": "/smartwallpaperfinder/static/js/runtime-main.26dc2fae.js",
+    "runtime-main.js.map": "/smartwallpaperfinder/static/js/runtime-main.26dc2fae.js.map",
+    "static/js/2.56c42fff.chunk.js": "/smartwallpaperfinder/static/js/2.56c42fff.chunk.js",
+    "static/js/2.56c42fff.chunk.js.map": "/smartwallpaperfinder/static/js/2.56c42fff.chunk.js.map",
+    "index.html": "/smartwallpaperfinder/index.html",
+    "precache-manifest.6fa0ef7ce3ea10447d0382d189c75f74.js": "/smartwallpaperfinder/precache-manifest.6fa0ef7ce3ea10447d0382d189c75f74.js",
+    "service-worker.js": "/smartwallpaperfinder/service-worker.js",
+    "static/css/main.467a4682.chunk.css.map": "/smartwallpaperfinder/static/css/main.467a4682.chunk.css.map",
+    "static/media/App.css": "/smartwallpaperfinder/static/media/main.21b530d2.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.26dc2fae.js",
+    "static/js/2.56c42fff.chunk.js",
+    "static/css/main.467a4682.chunk.css",
+    "static/js/main.1f6ffdc5.chunk.js"
+  ]
+}
