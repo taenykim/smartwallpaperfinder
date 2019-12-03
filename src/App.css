@@ -88,3 +88,16 @@
 .search_input:focus {
   outline: none;
 }
+.grid-item {
+  width: 25%;
+  border: 10px solid rgb(255, 255, 255);
+  box-sizing: border-box;
+  position: relative;
+}
+.image_info{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  color: white;
+}
