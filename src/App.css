@@ -75,12 +75,16 @@
   width: 20px;
   height: 20px;
 }
-.search {
+.search_form {
   padding-left: 40px;
+  width: 100%;
+}
+.search_input {
+  width: 100%;
   background: none;
   border: none;
   font-family: "escore9";
 }
-.search:focus {
+.search_input:focus {
   outline: none;
 }
