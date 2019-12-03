@@ -5,7 +5,8 @@ import search_icon from "./search_icon.png";
 class App extends Component {
   state = {
     searching_name: "",
-    searching_result: ""
+    searching_result: "",
+    result_arr: []
   };
 
   handleChange = e => {
@@ -18,37 +19,45 @@ class App extends Component {
     e.preventDefault();
     this.setState({
       searching_result: this.state.searching_name
+    },() => {
+      this.crawling();
     });
-    this.crawling();
+      
   };
 
-  crawling = async() => {
+  crawling = async () => {
     const request = require("request");
     const cheerio = require("cheerio");
     console.log(this.state.searching_result);
-    const options = "https://cors-anywhere.herokuapp.com/https://wall.alphacoders.com/search.php?search="+this.state.searching_result;
+    const options =
+      "https://cors-anywhere.herokuapp.com/https://wall.alphacoders.com/search.php?search=" +
+      this.state.searching_result;
     const callback = await ((error, respons, body) => {
       if (error) throw error;
       const $ = cheerio.load(body);
       let json = [],
         title,
         id,
-        desc,
+        category,
         img;
+      const i = 0;
       $("#page_container > div:nth-child(6) > div.thumb-container-big").each(
         function(i, elem) {
-          title = "Polar bear";
-          id = 1;
-          desc = $(this)
-            .find("div.thumb-container > div.boxgrid > a")
-            .attr("title");
+          title = $(this)
+          .find("div.thumb-container > div.boxcaption > span.thumb-info-big").text().split("\n")[3];
+          id = i;
+          category = $(this)
+            .find("div.thumb-container > div.boxcaption > span.thumb-info-big").text().split("\n")[2];
           img = $(this)
             .find("div.thumb-container > div.boxgrid > a > img")
             .attr("data-src");
-          json.push({ title: title, id: id, desc: desc, img: img });
+          json.push({ title: title, id: id, category: category, img: img });
         }
       );
       console.log("json: ", json);
+      this.setState({
+        result_arr:this.state.result_arr.concat(json)
+      })
     });
     request(options, callback);
   };
@@ -74,7 +83,7 @@ class App extends Component {
             </form>
           </div>
         </div>
-        <div className="contents">{this.state.searching_result}</div>
+        <div className="contents">{JSON.stringify(this.state.result_arr)}</div>
       </div>
     );
   }
