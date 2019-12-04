@@ -84,12 +84,14 @@ class App extends Component {
       );
       console.log("json: ", json);
       console.log(this.state.page);
-
+      if (
+        this.state.image_max_number >= this.state.image_number
+      ) {
       this.setState({
         result_arr: this.state.result_arr.concat(json),
         image_max_number: image_max_number,
         image_number: this.state.image_number + 30,
-      });
+      });}
     };
     request(options, callback);
     console.log("이미지맥스넘버", this.state.image_max_number);
@@ -109,7 +111,7 @@ class App extends Component {
     let clientHeight = document.documentElement.clientHeight;
     if (
       scrollTop + clientHeight + 100 > scrollHeight &&
-      this.state.image_max_number > this.state.image_number
+      this.state.image_max_number >= this.state.image_number
     ) {
       this.setState(
         {
