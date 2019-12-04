@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/smartwallpaperfinder/precache-manifest.d3319f99431664781f24b1582ddedf2c.js"
+  "/smartwallpaperfinder/precache-manifest.c8d23400527f27e7d428675743ad4607.js"
 );
 
 self.addEventListener('message', (event) => {

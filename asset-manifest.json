@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/smartwallpaperfinder/static/css/main.07c748e9.chunk.css",
-    "main.js": "/smartwallpaperfinder/static/js/main.7d47c35b.chunk.js",
-    "main.js.map": "/smartwallpaperfinder/static/js/main.7d47c35b.chunk.js.map",
+    "main.css": "/smartwallpaperfinder/static/css/main.0d696795.chunk.css",
+    "main.js": "/smartwallpaperfinder/static/js/main.6783c854.chunk.js",
+    "main.js.map": "/smartwallpaperfinder/static/js/main.6783c854.chunk.js.map",
     "runtime-main.js": "/smartwallpaperfinder/static/js/runtime-main.26dc2fae.js",
     "runtime-main.js.map": "/smartwallpaperfinder/static/js/runtime-main.26dc2fae.js.map",
     "static/js/2.fdc09ebb.chunk.js": "/smartwallpaperfinder/static/js/2.fdc09ebb.chunk.js",
     "static/js/2.fdc09ebb.chunk.js.map": "/smartwallpaperfinder/static/js/2.fdc09ebb.chunk.js.map",
     "index.html": "/smartwallpaperfinder/index.html",
-    "precache-manifest.d3319f99431664781f24b1582ddedf2c.js": "/smartwallpaperfinder/precache-manifest.d3319f99431664781f24b1582ddedf2c.js",
+    "precache-manifest.c8d23400527f27e7d428675743ad4607.js": "/smartwallpaperfinder/precache-manifest.c8d23400527f27e7d428675743ad4607.js",
     "service-worker.js": "/smartwallpaperfinder/service-worker.js",
-    "static/css/main.07c748e9.chunk.css.map": "/smartwallpaperfinder/static/css/main.07c748e9.chunk.css.map",
+    "static/css/main.0d696795.chunk.css.map": "/smartwallpaperfinder/static/css/main.0d696795.chunk.css.map",
     "static/media/App.css": "/smartwallpaperfinder/static/media/main.21b530d2.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.26dc2fae.js",
     "static/js/2.fdc09ebb.chunk.js",
-    "static/css/main.07c748e9.chunk.css",
-    "static/js/main.7d47c35b.chunk.js"
+    "static/css/main.0d696795.chunk.css",
+    "static/js/main.6783c854.chunk.js"
   ]
 }

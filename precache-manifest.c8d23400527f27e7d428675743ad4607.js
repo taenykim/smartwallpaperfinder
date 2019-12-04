@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dcdb1d40b44a4987efcb8a741c426eda",
+    "revision": "9f1a086b9ae39a793d98a92f70b90f8a",
     "url": "/smartwallpaperfinder/index.html"
   },
   {
-    "revision": "c6c74d8363ebe17c9f32",
-    "url": "/smartwallpaperfinder/static/css/main.07c748e9.chunk.css"
+    "revision": "7f4dd88b22c199508169",
+    "url": "/smartwallpaperfinder/static/css/main.0d696795.chunk.css"
   },
   {
     "revision": "b9bb537a217199b6a44c",
     "url": "/smartwallpaperfinder/static/js/2.fdc09ebb.chunk.js"
   },
   {
-    "revision": "c6c74d8363ebe17c9f32",
-    "url": "/smartwallpaperfinder/static/js/main.7d47c35b.chunk.js"
+    "revision": "7f4dd88b22c199508169",
+    "url": "/smartwallpaperfinder/static/js/main.6783c854.chunk.js"
   },
   {
     "revision": "3682da00ca317b93eff2",
