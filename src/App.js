@@ -88,7 +88,7 @@ class App extends Component {
       this.setState({
         result_arr: this.state.result_arr.concat(json),
         image_max_number: image_max_number,
-        image_number: this.state.image_number + json.length
+        image_number: this.state.image_number + 30,
       });
     };
     request(options, callback);
@@ -109,7 +109,7 @@ class App extends Component {
     let clientHeight = document.documentElement.clientHeight;
     if (
       scrollTop + clientHeight + 100 > scrollHeight &&
-      this.state.image_max_number > this.state.image_number + 30
+      this.state.image_max_number > this.state.image_number
     ) {
       this.setState(
         {
@@ -117,7 +117,6 @@ class App extends Component {
           page:
             this.state.page.substring(0, 6) +
             String(this.state.page_number + 1),
-          image_number: this.state.image_number + 30
         },
         () => this.crawling()
       );
