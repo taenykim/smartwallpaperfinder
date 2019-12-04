@@ -86,7 +86,7 @@ class App extends Component {
             img = $(this)
               .find("div.thumb-container > div.boxgrid > a > img")
               .attr("data-src");
-            json.push({id: id, link: link, img: img });
+            json.push({ id: id, link: link, img: img });
           }
         );
       }
@@ -209,6 +209,7 @@ class App extends Component {
               ></input>
             </form>
           </div>
+          <div className="dev-ment">데스크탑 이용 시, width가 1070 이상이어야 원활한 사용이 가능합니다.</div>
         </div>
         {/* <div className="contents">{JSON.stringify(this.state.result_arr)}</div> */}
         <div className="grid">
