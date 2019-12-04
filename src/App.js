@@ -55,43 +55,51 @@ class App extends Component {
       if (error) throw error;
       const $ = await cheerio.load(body);
       let json = [],
-        title,
         id,
-        category,
+        link,
         img;
       const image_max_number = Number(
         await $("#page_container > h1")
           .text()
           .split(" ")[8]
       );
+      if (window.innerWidth < 1070) {
+        $("#page_container > div:nth-child(6) > div.thumb-container").each(
+          function(i, elem) {
+            id = i;
+            link = $(this)
+              .find("div.thumb-container > a")
+              .attr("href");
+            img = $(this)
+              .find("div.thumb-container > a.wallpaper-thumb > img")
+              .attr("data-src");
+            json.push({ id: id, link: link, img: img });
+          }
+        );
+      } else {
+        $("#page_container > div:nth-child(6) > div.thumb-container-big").each(
+          function(i, elem) {
+            id = i;
+            link = $(this)
+              .find("div.thumb-container > div.boxgrid > a")
+              .attr("href");
+            img = $(this)
+              .find("div.thumb-container > div.boxgrid > a > img")
+              .attr("data-src");
+            json.push({id: id, link: link, img: img });
+          }
+        );
+      }
 
-      $("#page_container > div:nth-child(6) > div.thumb-container-big").each(
-        function(i, elem) {
-          title = $(this)
-            .find("div.thumb-container > div.boxcaption > span.thumb-info-big")
-            .text()
-            .split("\n")[3];
-          id = i;
-          category = $(this)
-            .find("div.thumb-container > div.boxcaption > span.thumb-info-big")
-            .text()
-            .split("\n")[2];
-          img = $(this)
-            .find("div.thumb-container > div.boxgrid > a > img")
-            .attr("data-src");
-          json.push({ title: title, id: id, category: category, img: img });
-        }
-      );
       console.log("json: ", json);
       console.log(this.state.page);
-      if (
-        this.state.image_max_number >= this.state.image_number
-      ) {
-      this.setState({
-        result_arr: this.state.result_arr.concat(json),
-        image_max_number: image_max_number,
-        image_number: this.state.image_number + 30,
-      });}
+      if (this.state.image_max_number >= this.state.image_number) {
+        this.setState({
+          result_arr: this.state.result_arr.concat(json),
+          image_max_number: image_max_number,
+          image_number: this.state.image_number + 30
+        });
+      }
     };
     request(options, callback);
     console.log("이미지맥스넘버", this.state.image_max_number);
@@ -117,8 +125,7 @@ class App extends Component {
         {
           page_number: this.state.page_number + 1,
           page:
-            this.state.page.substring(0, 6) +
-            String(this.state.page_number + 1),
+            this.state.page.substring(0, 6) + String(this.state.page_number + 1)
         },
         () => this.crawling()
       );
@@ -140,8 +147,9 @@ class App extends Component {
     return (
       <div className="full_container">
         <div className="page_view">
-          {this.state.image_number<=this.state.image_max_number && this.state.image_number + "/" + this.state.image_max_number}
-          {this.state.image_number>this.state.image_max_number && "Last"}
+          {this.state.image_number <= this.state.image_max_number &&
+            this.state.image_number + "/" + this.state.image_max_number}
+          {this.state.image_number > this.state.image_max_number && "Last"}
         </div>
         <div className="main">
           <div className="button_container">
@@ -177,7 +185,16 @@ class App extends Component {
             </div>
           </div>
           <div className="main_title">SMART WALLPAPER FINDER</div>
-          <div className="main_subtitle">FROM alphacoders</div>
+          <div className="main_subtitle">
+            FROM{" "}
+            <a
+              className="main_site_link"
+              href="https://wall.alphacoders.com/"
+              target="_blank"
+            >
+              alphacoders.com
+            </a>
+          </div>
           <div className="search_container">
             <img src={search_icon} id="search_icon"></img>
             <form className="search_form" onSubmit={this.handleSubmit}>
@@ -198,31 +215,46 @@ class App extends Component {
           {this.state.gridmode === 2 &&
             this.state.result_arr.map(item => {
               return (
-                <img
-                  style={girdStyle2}
-                  src={item.img}
-                  className="grid-item"
-                ></img>
+                <a
+                  href={"https://wall.alphacoders.com/" + item.link}
+                  target="_blank"
+                >
+                  <img
+                    style={girdStyle2}
+                    src={item.img}
+                    className="grid-item"
+                  ></img>
+                </a>
               );
             })}
           {this.state.gridmode === 4 &&
             this.state.result_arr.map(item => {
               return (
-                <img
-                  style={girdStyle4}
-                  src={item.img}
-                  className="grid-item"
-                ></img>
+                <a
+                  href={"https://wall.alphacoders.com/" + item.link}
+                  target="_blank"
+                >
+                  <img
+                    style={girdStyle4}
+                    src={item.img}
+                    className="grid-item"
+                  ></img>
+                </a>
               );
             })}
           {this.state.gridmode === 10 &&
             this.state.result_arr.map(item => {
               return (
-                <img
-                  style={girdStyle10}
-                  src={item.img}
-                  className="grid-item"
-                ></img>
+                <a
+                  href={"https://wall.alphacoders.com/" + item.link}
+                  target="_blank"
+                >
+                  <img
+                    style={girdStyle10}
+                    src={item.img}
+                    className="grid-item"
+                  ></img>
+                </a>
               );
             })}
         </div>
