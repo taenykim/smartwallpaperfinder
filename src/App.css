@@ -34,6 +34,17 @@
   font-family: "escore9";
   src: url(font/SCDream9.otf) format("truetype");
 }
+.full_container {
+}
+.page_view {
+  position: fixed;
+  width: 80px;
+  height: 40px;
+  background: yellow;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
 .main {
   display: flex;
   flex-direction: column;
@@ -45,6 +56,21 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow-x: hidden;
+  position: relative;
+}
+.button_container {
+  color: white;
+  position: absolute;
+  display: flex;
+  bottom: 5%;
+}
+.button {
+  font-family: "escore6";
+  background: rgba(0,0,0,0.5);
+  border: 2px solid white;
+  padding: 4px;
+  margin: 2px;
+  cursor: pointer;
 }
 .main_title {
   margin-left: 10%;
@@ -90,9 +116,8 @@
 }
 .grid-item {
   width: 25%;
-  border: 10px solid rgb(255, 255, 255);
+  border: 3px solid rgb(255, 255, 255);
   box-sizing: border-box;
-  position: relative;
 }
 .image_info{
   position: absolute;

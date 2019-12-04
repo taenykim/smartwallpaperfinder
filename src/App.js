@@ -10,7 +10,8 @@ class App extends Component {
     page: "&page=",
     image_number: 0,
     page_number: 1,
-    image_max_number: 0
+    image_max_number: 0,
+    gridmode: 4
   };
 
   componentDidMount() {
@@ -28,7 +29,7 @@ class App extends Component {
     this.setState(
       {
         searching_result: this.state.searching_name,
-        result_arr:[],
+        result_arr: [],
         page: "&page=",
         image_number: 0,
         page_number: 1,
@@ -87,7 +88,7 @@ class App extends Component {
       this.setState({
         result_arr: this.state.result_arr.concat(json),
         image_max_number: image_max_number,
-        // image_number: this.state.image_number + json.length
+        image_number: this.state.image_number + json.length
       });
     };
     request(options, callback);
@@ -108,7 +109,7 @@ class App extends Component {
     let clientHeight = document.documentElement.clientHeight;
     if (
       scrollTop + clientHeight + 100 > scrollHeight &&
-      this.state.image_max_number > this.state.image_number+30
+      this.state.image_max_number > this.state.image_number + 30
     ) {
       this.setState(
         {
@@ -125,9 +126,55 @@ class App extends Component {
   };
 
   render() {
+    const girdStyle2 = {
+      width: "50%"
+    };
+    const girdStyle4 = {
+      width: "25%"
+    };
+    const girdStyle10 = {
+      width: "10%"
+    };
+
     return (
       <div className="full_container">
+        <div className="page_view">
+          {this.state.image_number<=this.state.image_max_number && this.state.image_number + "/" + this.state.image_max_number}
+          {this.state.image_number>this.state.image_max_number && "Last"}
+        </div>
         <div className="main">
+          <div className="button_container">
+            <div
+              className="button"
+              onClick={() => {
+                this.setState({
+                  gridmode: 2
+                });
+              }}
+            >
+              2개씩보기
+            </div>
+            <div
+              className="button"
+              onClick={() => {
+                this.setState({
+                  gridmode: 4
+                });
+              }}
+            >
+              4개씩보기
+            </div>
+            <div
+              className="button"
+              onClick={() => {
+                this.setState({
+                  gridmode: 10
+                });
+              }}
+            >
+              10개씩보기
+            </div>
+          </div>
           <div className="main_title">SMART WALLPAPER FINDER</div>
           <div className="main_subtitle">FROM alphacoders</div>
           <div className="search_container">
@@ -147,9 +194,36 @@ class App extends Component {
         </div>
         {/* <div className="contents">{JSON.stringify(this.state.result_arr)}</div> */}
         <div className="grid">
-          {this.state.result_arr.map(item => {
-            return <img src={item.img} className="grid-item"></img>;
-          })}
+          {this.state.gridmode === 2 &&
+            this.state.result_arr.map(item => {
+              return (
+                <img
+                  style={girdStyle2}
+                  src={item.img}
+                  className="grid-item"
+                ></img>
+              );
+            })}
+          {this.state.gridmode === 4 &&
+            this.state.result_arr.map(item => {
+              return (
+                <img
+                  style={girdStyle4}
+                  src={item.img}
+                  className="grid-item"
+                ></img>
+              );
+            })}
+          {this.state.gridmode === 10 &&
+            this.state.result_arr.map(item => {
+              return (
+                <img
+                  style={girdStyle10}
+                  src={item.img}
+                  className="grid-item"
+                ></img>
+              );
+            })}
         </div>
       </div>
     );
