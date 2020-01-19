@@ -16,15 +16,6 @@ class App extends Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this._infiniteScroll, true)
-    this.callApi()
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
-  }
-
-  callApi = async () => {
-    const response = await fetch('/temp')
-    const body = await response.json()
-    return body
   }
 
   handleChange = e => {
@@ -50,25 +41,25 @@ class App extends Component {
     )
   }
 
-  crawling = async () => {
+  crawling = () => {
     const request = require('request')
     const cheerio = require('cheerio')
-    console.log(this.state.searching_result)
+    // console.log(this.state.searching_result)
     const options =
-      (await 'https://cors-anywhere.herokuapp.com/https://wall.alphacoders.com/search.php?search=') +
+      'https://cors-anywhere.herokuapp.com/https://wall.alphacoders.com/search.php?search=' +
       this.state.searching_result +
       this.state.page
-    console.log(options)
-    const callback = async (error, respons, body) => {
-      console.log(this.state.page)
+    // console.log(options)
+    const callback = (error, respons, body) => {
+      // console.log(this.state.page)
       if (error) throw error
-      const $ = await cheerio.load(body)
+      const $ = cheerio.load(body)
       let json = [],
         id,
         link,
         img
       const image_max_number = Number(
-        await $('#page_container > h1')
+        $('#page_container > h1')
           .text()
           .split(' ')[8]
       )
@@ -96,8 +87,8 @@ class App extends Component {
         })
       }
 
-      console.log('json: ', json)
-      console.log(this.state.page)
+      // console.log('json: ', json)
+      // console.log(this.state.page)
       if (this.state.image_max_number >= this.state.image_number) {
         this.setState({
           result_arr: this.state.result_arr.concat(json),
@@ -107,9 +98,9 @@ class App extends Component {
       }
     }
     request(options, callback)
-    console.log('이미지맥스넘버', this.state.image_max_number)
-    console.log('이미지넘버', this.state.image_number)
-    console.log('페이지넘버', this.state.page_number)
+    // console.log('이미지맥스넘버', this.state.image_max_number)
+    // console.log('이미지넘버', this.state.image_number)
+    // console.log('페이지넘버', this.state.page_number)
   }
 
   _infiniteScroll = () => {
