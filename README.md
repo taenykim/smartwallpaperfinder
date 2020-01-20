@@ -22,7 +22,7 @@
 
 ### 4-1. 메인 페이지
 
-![image.png](https://images.velog.io/post-images/kimtaeeeny/f96af330-3a97-11ea-8cab-c945f42b1db1/image.png)
+![image.png](https://taenykim.github.io/portfoliov2/static/media/wallpaperfinder1.b2010af4.png)
 
 화면 중앙에 검색창과 우측상단에 해당 키워드의 이미지 개수와 현재 보여지는 이미지 개수정보, 하단에는 이미지 레이아웃 형태를 선택할 수 있는 3개의 버튼을 두었습니다. 검색창 하단에 "데스크탑 이용시 width를 1070이상을 유지"하라는 메시지를 적어놓았는데 `크롤링대상 사이트가 모바일버젼, 데스크탑버젼의 이미지 css선택자명이 달라서 데스크탑은 1070이상, 모바일은 1070이하일 때, 크롤링데이터를 정상적으로 받아올 수 있습니다.`(제 편의를 위해 만든 사이트다보니 모바일, 데스크탑 버젼을 따로 만들지는 않았습니다.
 - TIP) 외국 사이트다보니 검색어는 영문을 입력해야합니다.
